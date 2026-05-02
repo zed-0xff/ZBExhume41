@@ -1,0 +1,16 @@
+name=Exhume 41
+id=ZBExhume41
+
+author=Zed
+url=https://github.com/zed-0xff
+
+icon=icon_64.png
+poster=icon_512.png
+
+description=Run B41 mods on B42
+
+require=\ZombieBuddy,\ZModUnbork
+javaJarFile=media/java/ZBExhume41.jar
+javaPkgName=me.zed_0xff.zb_exhume_41
+javaPreload=true
+ZBVersionMin=2.1.0

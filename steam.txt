@@ -1,0 +1,20 @@
+[h1]Exhume 41[/h1]
+
+Run [b]B41 mods on B42[/b] without modification.
+
+B42 introduced versioned subdirectories (e.g. [i]42/media/...[/i]). Mods built for B41 don't have these directories, so the game skips loading their content entirely. This mod patches [i]ZomboidFileSystem.getModVersionDirName[/i] to fall back to the mod root when neither a versioned subdirectory nor [i]common/[/i] exists — making old mods visible to the B42 loader again.
+
+This mod uses the [b]ZombieBuddy 2.1.0+ mod preload mechanism[/b] to apply its patch early enough — before the game resolves any mod content.
+
+[b]Requirements:[/b]
+[list]
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3619862853]ZombieBuddy[/url] — required framework
+[*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3677147974]Zed's Universal Mod Unbork[/url] — API compatibility shims for renamed game methods
+[/list]
+
+[b]Links:[/b]
+[url=https://github.com/zed-0xff/ZBExhume41]GitHub Repository[/url]
+
+[b]☕ Support the Developer:[/b]
+[url=https://ko-fi.com/zed_0xff][img]https://i.imgur.com/Utx6OIH.png[/img][/url]
+

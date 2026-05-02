@@ -1,0 +1,10 @@
+.gradle
+.project
+.settings
+*.class
+*.log
+*.tmp
+*.swp
+
+build
+tmp

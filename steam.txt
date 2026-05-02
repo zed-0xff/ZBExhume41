@@ -12,6 +12,11 @@ This mod uses the [b]ZombieBuddy 2.1.0+ mod preload mechanism[/b] to apply its p
 [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=3677147974]Zed's Universal Mod Unbork[/url] — API compatibility shims for renamed game methods
 [/list]
 
+[h1]Exhumed mods[/h1]
+[list]
+   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2460154811]Brita 2[/url]
+[/list]
+
 [b]Links:[/b]
 [url=https://github.com/zed-0xff/ZBExhume41]GitHub Repository[/url]
 

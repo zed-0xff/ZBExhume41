@@ -28,23 +28,28 @@ task :build => VERSIONS.keys.map { |ver| "build:#{ver}" }
 desc "update steam.txt from info.yml"
 task :info do
   require 'yaml'
-  info = YAML.load_file('info.yml')
+  info = YAML.load_file('../ZModUnbork/info.yml')
   in_lines = File.readlines('steam.txt')
 
   class ModInfo
     attr_accessor :id, :title, :zb, :comment
 
     def initialize(id, title:, comment: nil, zb: false, exhume: false)
+      if title.is_a?(Hash)
+        title, comment = title.values_at("title", "comment")
+      end
       @id      = id
-      @comment = comment
+      @comment = comment ? " (#{comment})" : nil
       @title   = title
-      @comment ||= " (with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3619862853]ZombieBuddy[/url] for java-side patches)" if zb
-      @comment ||= " (with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3718604798]Exhume 41[/url] for loading B41 mod on B42)" if exhume
     end
   end
 
   mods = [
-    info['mods'].map     { |id, title| ModInfo.new(id, title:) },
+    info['b41_mods'].map     { |id, title| ModInfo.new(id, title:) },
+  ].map(&:to_a).flatten.sort_by(&:title)
+
+  bad_mods = [
+    info.fetch('b41_bad_mods', {}).map { |id, title| ModInfo.new(id, title:) },
   ].map(&:to_a).flatten.sort_by(&:title)
 
   out_lines = []
@@ -58,10 +63,16 @@ task :info do
       mods.each do |m|
         out_lines << "   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=#{m.id}]#{m.title}[/url]#{m.comment}\n"
       end
-      if info['mod_pairs']
-        info['mod_pairs'].each do |pair|
-          out_lines << "   [*]" + pair.map{ |id, name| "[url=https://steamcommunity.com/sharedfiles/filedetails/?id=#{id}]#{name}[/url]" }.join(" + ") + "\n"
-        end
+      out_lines << "[/list]\n"
+      out_lines << "\n"
+        
+      i += 1 while in_lines[i].strip != ""
+    end
+
+    if line =~ /^\[h1\]NOT working mods/
+      out_lines << "[list]\n"
+      bad_mods.each do |m|
+        out_lines << "   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=#{m.id}]#{m.title}[/url]#{m.comment}\n"
       end
       out_lines << "[/list]\n"
       out_lines << "\n"

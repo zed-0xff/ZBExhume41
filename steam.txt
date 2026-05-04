@@ -14,7 +14,11 @@ This mod uses the [b]ZombieBuddy 2.1.0+ mod preload mechanism[/b] to apply its p
 
 [h1]Exhumed mods[/h1]
 [list]
-   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2460154811]Brita 2[/url]
+   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2297098490]Arsenal GunFighter[/url]
+   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2460154811]Brita's Armor Pack[/url]
+   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2200148440]Brita's Weapon Pack[/url]
+   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url] (may be required by other B41 mods)
+   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2696120270]Simple Convert Vanilla to Brita[/url]
 [/list]
 
 [b]Links:[/b]

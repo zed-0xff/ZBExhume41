@@ -3,7 +3,7 @@ task :default => [:info, :build]
 MOD_ID   = "ZBExhume41"
 MOD_TYPE = ""
 VERSIONS = {
-  "42" => "17",
+  "42.13" => "24",
 }
 
 VERSIONS.each do |ver, jdk_ver|

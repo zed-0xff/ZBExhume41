@@ -1,5 +1,7 @@
 name=Exhume 41
 id=ZBExhume41
+versionMin=42.13
+modversion=1.1
 
 author=Zed
 url=https://github.com/zed-0xff
@@ -13,4 +15,4 @@ require=\ZombieBuddy,\ZModUnbork
 javaJarFile=media/java/ZBExhume41.jar
 javaPkgName=me.zed_0xff.zb_exhume_41
 javaPreload=true
-ZBVersionMin=2.1.0
+ZBVersionMin=2.3.0

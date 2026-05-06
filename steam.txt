@@ -25,6 +25,18 @@ This mod uses the [b]ZombieBuddy 2.1.0+ mod preload mechanism[/b] to apply its p
     [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2696120270]Simple Convert Vanilla to Brita[/url]
 [/list]
 
+[h1]FAQ[/h1]
+[list]
+    [*][b]Do map mods work out of the box with this?[/b]
+    No. Binary map format changed in B42, so map mods built for B41 won't work without modification.
+
+    [*][b]Does it work for all mods or just listed ones?[/b]
+    It should work for all mods, I just listed some popular ones that I know of and have tested with.
+
+    [*][b]Brita's doen't apear on the modlist[/b]
+    Be sure you have [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3619862853]ZombieBuddy[/url] installed and activated. It should show its icon and status lines at top left corner of the main menu screen. Be sure it shows "ZBExhume41" in the list of active mods.
+[/list]
+
 [b]Links:[/b]
 [url=https://github.com/zed-0xff/ZBExhume41]GitHub Repository[/url]
 

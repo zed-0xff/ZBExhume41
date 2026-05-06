@@ -2,7 +2,11 @@
 
 Run [b]B41 mods on B42[/b] without modification.
 
-B42 introduced versioned subdirectories (e.g. [i]42/media/...[/i]). Mods built for B41 don't have these directories, so the game skips loading their content entirely. This mod patches [i]ZomboidFileSystem.getModVersionDirName[/i] to fall back to the mod root when neither a versioned subdirectory nor [i]common/[/i] exists — making old mods visible to the B42 loader again.
+B42 introduced versioned subdirectories (e.g. [i]42/media/...[/i]). Mods built for B41 don't have these directories, so the game skips loading their content entirely. This mod:
+[olist]
+    [*]patches [i]ZomboidFileSystem.getModVersionDirName()[/i] to fall back to the mod root when neither a versioned subdirectory nor [i]common/[/i] exists — making old mods visible to the B42 loader again.
+    [*]makes [i]Registry<>.registerBase()[/i] methods available to Lua, so mods can register their content in the "Base" namespace again, as they did in B41. [url=https://steamcommunity.com/sharedfiles/filedetails/?id=3677147974]ZModUnbork[/url] detects if this function is present and uses it to maintain compatibility with B41 mods that register content in the "Base" namespace.
+[/olist]
 
 This mod uses the [b]ZombieBuddy 2.1.0+ mod preload mechanism[/b] to apply its patch early enough — before the game resolves any mod content.
 
@@ -14,11 +18,11 @@ This mod uses the [b]ZombieBuddy 2.1.0+ mod preload mechanism[/b] to apply its p
 
 [h1]Exhumed mods[/h1]
 [list]
-   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2297098490]Arsenal GunFighter[/url]
-   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2460154811]Brita's Armor Pack[/url]
-   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2200148440]Brita's Weapon Pack[/url]
-   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url] (may be required by other B41 mods)
-   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2696120270]Simple Convert Vanilla to Brita[/url]
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2297098490]Arsenal GunFighter[/url]
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2460154811]Brita's Armor Pack[/url]
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2200148440]Brita's Weapon Pack[/url]
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2169435993]Mod Options[/url] (may be required by other B41 mods)
+    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=2696120270]Simple Convert Vanilla to Brita[/url]
 [/list]
 
 [b]Links:[/b]

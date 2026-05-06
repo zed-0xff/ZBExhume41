@@ -61,7 +61,7 @@ task :info do
     if line =~ /^\[h1\]Exhumed mods/
       out_lines << "[list]\n"
       mods.each do |m|
-        out_lines << "   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=#{m.id}]#{m.title}[/url]#{m.comment}\n"
+        out_lines << "    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=#{m.id}]#{m.title}[/url]#{m.comment}\n"
       end
       out_lines << "[/list]\n"
       out_lines << "\n"
@@ -72,7 +72,7 @@ task :info do
     if line =~ /^\[h1\]NOT working mods/
       out_lines << "[list]\n"
       bad_mods.each do |m|
-        out_lines << "   [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=#{m.id}]#{m.title}[/url]#{m.comment}\n"
+        out_lines << "    [*][url=https://steamcommunity.com/sharedfiles/filedetails/?id=#{m.id}]#{m.title}[/url]#{m.comment}\n"
       end
       out_lines << "[/list]\n"
       out_lines << "\n"

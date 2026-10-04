@@ -1,6 +1,6 @@
 package me.zed_0xff.zb_exhume_41;
 
-import me.zed_0xff.zombie_buddy.Patch;
+import me.zed_0xff.zombie_buddy.annotations.Patch;
 
 import java.nio.file.Files;
 import java.nio.file.Path;

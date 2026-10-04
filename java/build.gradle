@@ -1,6 +1,6 @@
 plugins {
   id 'java'
-  id 'io.github.zed-0xff.zb-gradle-plugin' version '1.0.1'
+  id 'io.github.zed-0xff.zb-gradle-plugin' version '1.0.3'
 }
 
 def osName = System.getProperty("os.name").toLowerCase()
@@ -9,8 +9,15 @@ def HOME_DIR = System.getProperty("user.home")
 def CUR_GAME_DIR = "${HOME_DIR}/Library/Application Support/Steam/steamapps/common/ProjectZomboid/Project Zomboid.app/Contents/Java"
 
 // ZVersion: dotted game version (e.g. 41, 42.12, 42.13) — drives GAME_DIR, archiveBaseName, and source variant
+def runningTests = gradle.startParameter.taskNames.any { it in ['test', ':test', 'check'] }
 def ZVersion = findProperty('ZVersion')
-if (!ZVersion) throw new GradleException('ZVersion must be set (e.g. -PZVersion=42.13)')
+if (!ZVersion) {
+    if (runningTests) {
+        ZVersion = '42.13'  // default for `gradle test` without explicit version
+    } else {
+        throw new GradleException('ZVersion must be set (e.g. -PZVersion=42.13)')
+    }
+}
 
 def variant = 'B' + ZVersion.replace('.', '_')
 def GAME_DIR = "${HOME_DIR}/projects/zomboid/versions/${ZVersion}"
@@ -22,6 +29,8 @@ dependencies {
     } else {
         compileOnly files("${GAME_DIR}/java/ProjectZomboid.jar")
     }
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 def MOD_ID = project.projectDir.parentFile.name
@@ -37,7 +46,6 @@ repositories {
     gradlePluginPortal()
 }
 
-// place all .java files in the 'src' directory
 sourceSets {
     main {
         java {
@@ -45,11 +53,43 @@ sourceSets {
             include '**/*.java'
         }
     }
+    test {
+        java {
+            srcDirs = ['test']
+        }
+    }
+}
+
+test {
+    useJUnitPlatform()
+    systemProperty 'versions.dir', "${HOME_DIR}/projects/zomboid/versions"
+}
+
+// Configure all test tasks to always run and output test results
+tasks.withType(Test) {
+    // Always run tests, even if build is up-to-date
+    outputs.upToDateWhen { false }
+
+    // Don't capture stdout/stderr - show it directly in console
+    testLogging {
+        showStandardStreams = true
+    }
+
+    // Disable HTML reports
+    reports {
+        html.required = false
+    }
+
+    // Output test results summary
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\n[=] ${name.padRight(12)}: ${result.testCount} tests, ${result.successfulTestCount} successful, ${result.failedTestCount} failed"
+        }
+    }
 }
 
 // disable annotation processing, JNI headers, and incremental compilation
 tasks.withType(JavaCompile).configureEach {
-    options.annotationProcessorPath = files()
     options.generatedSourceOutputDirectory.set(provider { null })
     options.headerOutputDirectory.set(provider { null })
     options.incremental = false

@@ -5,6 +5,7 @@ modversion=1.1
 
 author=Zed
 url=https://github.com/zed-0xff
+patreon=https://patreon.com/zed_0xff
 
 icon=icon_64.png
 poster=icon_512.png
@@ -12,7 +13,13 @@ poster=icon_512.png
 description=Run B41 mods on B42
 
 require=\ZombieBuddy,\ZModUnbork
-javaJarFile=media/java/ZBExhume41.jar
-javaPkgName=me.zed_0xff.zb_exhume_41
+
 javaPreload=true
+javaPkgName=me.zed_0xff.zb_exhume_41
+
+javaJarFile=media/java/ZBExhume41-2x.jar
 ZBVersionMin=2.3.0
+ZBVersionMax=2.99.99
+
+javaJarFile1=media/java/ZBExhume41.jar
+ZBVersionMin=3.0.0

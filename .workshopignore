@@ -8,6 +8,7 @@
 *.xcf
 
 build
+lib
 tmp
 
 Rakefile

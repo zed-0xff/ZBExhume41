@@ -3,7 +3,7 @@ task :default => [:info, :build]
 MOD_ID   = "ZBExhume41"
 MOD_TYPE = ""
 VERSIONS = {
-  "42.13" => "24",
+  "42.13" => "25",
 }
 
 VERSIONS.each do |ver, jdk_ver|
@@ -20,10 +20,23 @@ VERSIONS.each do |ver, jdk_ver|
     FileUtils.mv "java/build/libs/#{MOD_ID}-#{ver}.jar", "#{dst_dir}/#{MOD_ID}.jar"
     FileUtils.mv "java/build/libs/#{MOD_ID}-#{ver}.jar.zbs", "#{dst_dir}/#{MOD_ID}.jar.zbs"
   end
+
+  desc "clean build for #{ver}"
+  task "clean:#{ver}" do
+    Dir.chdir("java") do
+      env = {
+        "JAVA_HOME" => "/Library/Java/JavaVirtualMachines/openjdk-#{jdk_ver}.jdk/Contents/Home"
+      }
+      sh env, "gradle clean -PZVersion=#{ver}"
+    end
+  end
 end
 
 desc "build all"
 task :build => VERSIONS.keys.map { |ver| "build:#{ver}" }
+
+desc "clean all"
+task :clean => VERSIONS.keys.map { |ver| "clean:#{ver}" }
 
 desc "update steam.txt from info.yml"
 task :info do
@@ -84,6 +97,14 @@ task :info do
   end
 
   File.write('steam.txt', out_lines.join)
+end
+
+desc "run Java unit tests"
+task :test do
+  Dir.chdir("java") do
+    env = { "JAVA_HOME" => "/Library/Java/JavaVirtualMachines/openjdk-25.jdk/Contents/Home" }
+    sh env, "gradle test --info"
+  end
 end
 
 desc "show steam url"

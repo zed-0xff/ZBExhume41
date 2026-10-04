@@ -5,6 +5,7 @@
 
 *.class
 *.kra
+*.sh
 *.xcf
 
 build

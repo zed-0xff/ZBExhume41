@@ -41,5 +41,4 @@ This mod uses the [b]ZombieBuddy 2.1.0+ mod preload mechanism[/b] to apply its p
 [url=https://github.com/zed-0xff/ZBExhume41]GitHub Repository[/url]
 
 [b]☕ Support the Developer:[/b]
-[url=https://ko-fi.com/zed_0xff][img]https://i.imgur.com/Utx6OIH.png[/img][/url]
-
+[url=https://patreon.com/zed_0xff][img]https://cdn.jsdelivr.net/gh/zed-0xff/ZombieBuddy@master/patreon.png[/img][/url]
